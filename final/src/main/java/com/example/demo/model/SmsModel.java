@@ -9,7 +9,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
-//model-> repositorio-> service -> dentro listar todso os usuarios-> implementa 
 
 @Entity
 @Table(name = "sms")

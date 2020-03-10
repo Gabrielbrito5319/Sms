@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+//model-> repositorio-> service -> dentro listar todso os usuarios-> implementa 
 
 @SpringBootApplication
 public class FinalApplication {
