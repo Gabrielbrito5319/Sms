@@ -1,46 +1,33 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "profile")
-public class UserProfileModel {
+public class UserProfileModel implements Serializable{
 	
-	@Id
 	private long id;
-	
-	@NotNull
-	@Size(max = 100)
 	private String userName;
-	
-	@NotNull
-	@Size(max = 13)
 	private String phoneNumber;
-	
-	@Temporal(TemporalType.DATE)
-    @Column(name = "dob")
-	private Date dateOfBirth;
-	
-	@NotNull
-	@Size(max = 100)
-	private String address;
-	
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id", nullable = false)
+	private String image;
+	private ArrayList<UserProfileModel> contats;
+	private ArrayList<MessageModel> message;
+	private ArrayList<Stories> stories;	
 	private UserModel user;
 
 
@@ -52,6 +39,8 @@ public class UserProfileModel {
 	}
 
 
+	@Id
+	@Column (name= "id")
 	public long getId() {
 		return id;
 	}
@@ -62,6 +51,8 @@ public class UserProfileModel {
 	}
 
 
+	@NotNull
+	@Size(max = 100)
 	public String getUserName() {
 		return userName;
 	}
@@ -72,6 +63,8 @@ public class UserProfileModel {
 	}
 
 
+	@NotNull
+	@Size(max = 13)
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -81,27 +74,8 @@ public class UserProfileModel {
 		this.phoneNumber = phoneNumber;
 	}
 
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
+	@OneToOne
+	@MapsId // estou utizando o ID do user como ID de profile
 	public UserModel getUser() {
 		return user;
 	}
@@ -109,6 +83,46 @@ public class UserProfileModel {
 
 	public void setUser(UserModel user) {
 		this.user = user;
+	}
+
+	@Column(name= "image")
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public ArrayList<UserProfileModel> getContats() {
+		return contats;
+	}
+
+
+	public void setContats(ArrayList<UserProfileModel> contats) {
+		this.contats = contats;
+	}
+
+	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
+	public ArrayList<MessageModel> getMessage() {
+		return message;
+	}
+
+
+	public void setMessage(ArrayList<MessageModel> message) {
+		this.message = message;
+	}
+
+	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public ArrayList<Stories> getStories() {
+		return stories;
+	}
+
+
+	public void setStories(ArrayList<Stories> stories) {
+		this.stories = stories;
 	}
 	
 	

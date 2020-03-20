@@ -4,52 +4,36 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import com.sun.istack.NotNull;
 
-@Entity
-@Table (name = "users")
+@Entity // faz com que essa clase represente um entidade no banco de dados
+@Table (name = "users") // nome da tabela
 public class UserModel implements Serializable{
 	
-	@Id
 	private long id;
-	
-	@NotNull
-	@Column(name = "firstName")
-	private String firstName;
-	
-	@NotNull
-	@Column(name = "lastName")
-	private String lastName;
-	
-	@NotNull
-	@Column(name = "dateOfBirth")
-	private Date dateOfBirth;
-	
-	@NotNull
-	ArrayList<UserModel> contacts;
-	
-	@NotNull
-	@Column(name = "address")
-	private String address;
-	
-	@NotNull
-	@Column(name = "email")
-	@Size(max = 100)
-	private String email;
-	
-	@NotNull
-	private String password;
-	
-	@NotNull
+	private String firstName;	
+	private String lastName;	
+	private Date dateOfBirth;	
+    private String address;
+    private String street;
+    private String city;
+    private String state;
+    private String country;
+	private String email;	
+	private String password;	
 	private boolean status;
+	private UserProfileModel profile;
 	
-
 	public UserModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -57,21 +41,19 @@ public class UserModel implements Serializable{
 	
 
 
-	public UserModel(long id, String firstName, String lastName, Date dateOfBirth, ArrayList<UserModel> contacts,
+	public UserModel(String firstName, String lastName, Date dateOfBirth, 
 			String address, String email, String password) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
-		this.contacts = contacts;
 		this.address = address;
 		this.email = email;
 		this.password = password;
 	}
 
-
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -79,7 +61,60 @@ public class UserModel implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	@Column (name = "street")
+	public String getStreet() {
+		return street;
+	}
 
+
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+
+	@Column (name = "city")
+	public String getCity() {
+		return city;
+	}
+
+
+	
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
+	@Column (name = "state")
+	public String getState() {
+		return state;
+	}
+
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
+	@Column (name = "country")
+	public String getCountry() {
+		return country;
+	}
+
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+
+	@NotNull
+	@Column(name = "firstName")
 	public String getFirstName() {
 		return firstName;
 	}
@@ -88,6 +123,8 @@ public class UserModel implements Serializable{
 		this.firstName = firstName;
 	}
 
+	@NotNull
+	@Column(name = "lastName")
 	public String getLastName() {
 		return lastName;
 	}
@@ -96,6 +133,8 @@ public class UserModel implements Serializable{
 		this.lastName = lastName;
 	}
 
+	@NotNull
+	@Column(name = "dateOfBirth")
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -104,14 +143,9 @@ public class UserModel implements Serializable{
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public ArrayList<UserModel> getContacts() {
-		return contacts;
-	}
 
-	public void setContacts(ArrayList<UserModel> contacts) {
-		this.contacts = contacts;
-	}
-
+	@NotNull
+	@Column(name = "address")
 	public String getAddress() {
 		return address;
 	}
@@ -120,6 +154,9 @@ public class UserModel implements Serializable{
 		this.address = address;
 	}
 
+	@NotNull
+	@Column(name = "email")
+	@Size(max = 100)
 	public String getEmail() {
 		return email;
 	}
@@ -128,6 +165,7 @@ public class UserModel implements Serializable{
 		this.email = email;
 	}
 
+	@NotNull
 	public String getPassword() {
 		return password;
 	}
@@ -136,12 +174,25 @@ public class UserModel implements Serializable{
 		this.password = password;
 	}
 
+	@NotNull
 	public boolean isStatus() {
 		return status;
 	}
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+
+	@OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
+	public UserProfileModel getProfile() {
+		return profile;
+	}
+
+
+
+	public void setProfile(UserProfileModel profile) {
+		this.profile = profile;
 	}
 	
 	
