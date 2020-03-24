@@ -29,6 +29,7 @@ public class UserProfileModel implements Serializable{
 	private ArrayList<MessageModel> message;
 	private ArrayList<Stories> stories;	
 	private UserModel user;
+	private boolean status;
 
 
 	
@@ -123,6 +124,16 @@ public class UserProfileModel implements Serializable{
 
 	public void setStories(ArrayList<Stories> stories) {
 		this.stories = stories;
+	}
+
+	@Column(name = "status")
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	
