@@ -9,7 +9,6 @@ public class UserProfileDto {
 	private String userName;
 	private String phoneNumber;
 	private Date dateOfBirth;
-	private String address;
 	private UserModel user;
 	public String getUserName() {
 		return userName;
