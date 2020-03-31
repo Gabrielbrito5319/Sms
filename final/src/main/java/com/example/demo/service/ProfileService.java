@@ -20,9 +20,11 @@ public List<UserProfileModel> listUsers();
 	
 	public List<Contacts> listContacts (Long id);
 	
-	public Contacts addContact (long id, Contacts contato);
+	public void addContact (long id, Contacts contato);
 	
 	public void deleteContact (String numero);
+	
+	public void addStories (Stories stories);
 	
 	public List<Stories> listStories (long id);
 	

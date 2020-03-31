@@ -64,20 +64,27 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public Contacts addContact(long id, Contacts contato) {
+	public void addContact(long id, Contacts contato) {
 		// TODO Auto-generated method stub
 		UserProfileModel profile = profileRepository.findById(id).get();
-		 Arraylist<Contacts> contatos =profile.getContats();
+		 profile.addContact(contato);
 		 
-		;
+		 
+		 profileRepository.save(profile);	
 	}
 	
 	@Override
 	public void deleteContact(String numero) {
 		// TODO Auto-generated method stub
 		
+		
 	}
 
+	@Override
+	public void addStories(Stories stories) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public List<Stories> listStories(long id) {
@@ -121,5 +128,6 @@ public class ProfileServiceImpl implements ProfileService {
 
 	}
 
+	
 	
 }

@@ -2,7 +2,6 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -134,6 +133,8 @@ public class UserProfileModel implements Serializable{
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+	public void addContact(Contacts contact) {
+		contats.add(contact);
+	}
 	
 }
