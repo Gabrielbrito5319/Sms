@@ -22,6 +22,8 @@ public List<UserProfileModel> listUsers();
 	
 	public Contacts addContact (Contacts contato);
 	
+	public void deleteContact (String numero);
+	
 	public List<Stories> listStories (long id);
 	
 	public void deleteAllStoris (UserProfileModel profile);

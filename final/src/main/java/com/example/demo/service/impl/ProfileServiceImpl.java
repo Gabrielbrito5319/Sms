@@ -2,23 +2,44 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.demo.model.Contacts;
 import com.example.demo.model.MessageModel;
 import com.example.demo.model.Stories;
 import com.example.demo.model.UserProfileModel;
+import com.example.demo.repository.ContactsRepository;
+import com.example.demo.repository.MessageRepository;
+import com.example.demo.repository.StoriesRepository;
+import com.example.demo.repository.UserProfileRepository;
 import com.example.demo.service.ProfileService;
 
 public class ProfileServiceImpl implements ProfileService {
 
+	@Autowired
+	private UserProfileRepository profileRepository;
+	
+	@Autowired
+	private ContactsRepository contactsRepository;
+	
+	@Autowired
+	private StoriesRepository storiesRepository;
+	
+	@Autowired
+	private MessageRepository messageRepository;
+	
 	@Override
 	public List<UserProfileModel> listUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return profileRepository.findAll();
 	}
 
 	@Override
 	public UserProfileModel updateUserProfile(UserProfileModel user) {
-		// TODO Auto-generated method stub
+		String userName = user.getUserName();
+		profileRepository.findByUserName(userName);
+		profileRepository.save(user);
 		return null;
 	}
 
@@ -45,6 +66,13 @@ public class ProfileServiceImpl implements ProfileService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void deleteContact(String numero) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	@Override
 	public List<Stories> listStories(long id) {
@@ -88,4 +116,5 @@ public class ProfileServiceImpl implements ProfileService {
 
 	}
 
+	
 }
