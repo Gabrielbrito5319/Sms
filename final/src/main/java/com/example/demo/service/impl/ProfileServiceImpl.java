@@ -44,27 +44,32 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public UserProfileModel deleteUserProfile(Long id) {
+	public void deleteUserProfile(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		 profileRepository.deleteById(id);
 	}
 
 	@Override
 	public UserProfileModel fingByUserName(String UserName) {
 		// TODO Auto-generated method stub
-		return null;
+		return profileRepository.findByUserName(UserName);
 	}
 
 	@Override
 	public List<Contacts> listContacts(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		UserProfileModel profile = profileRepository.findById(id).get();
+		return profile.getContats();
+		
 	}
 
 	@Override
-	public Contacts addContact(Contacts contato) {
+	public Contacts addContact(long id, Contacts contato) {
 		// TODO Auto-generated method stub
-		return null;
+		UserProfileModel profile = profileRepository.findById(id).get();
+		 Arraylist<Contacts> contatos =profile.getContats();
+		 
+		;
 	}
 	
 	@Override

@@ -14,13 +14,13 @@ public List<UserProfileModel> listUsers();
 	
 	public UserProfileModel updateUserProfile (UserProfileModel user);
 	
-	public UserProfileModel deleteUserProfile (Long id);
+	public void deleteUserProfile (Long id);
 
 	public UserProfileModel fingByUserName (String UserName);
 	
 	public List<Contacts> listContacts (Long id);
 	
-	public Contacts addContact (Contacts contato);
+	public Contacts addContact (long id, Contacts contato);
 	
 	public void deleteContact (String numero);
 	
