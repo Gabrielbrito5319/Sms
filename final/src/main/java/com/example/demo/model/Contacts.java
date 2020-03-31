@@ -14,8 +14,9 @@ import javax.persistence.Table;
 public class Contacts implements Serializable{
 
 	private long id;
-	private UserProfileModel owner;
-	private UserProfileModel friend;
+	private String nameContact;
+	private String phoneNumber;
+	private UserProfileModel user;
 	public Contacts() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -30,19 +31,20 @@ public class Contacts implements Serializable{
 		this.id = id;
 	}
 	
-	@Column (name = "owner")
-	public UserProfileModel getOwner() {
-		return owner;
+	@Column (name= "namecontact")
+	public String getNameContact() {
+		return nameContact;
 	}
-	public void setOwner(UserProfileModel owner) {
-		this.owner = owner;
+	public void setNameContact(String nameContact) {
+		this.nameContact= nameContact;
 	}
-	@Column (name = "friend")
-	public UserProfileModel getFriend() {
-		return friend;
+	
+	@Column (name = "user")
+	public UserProfileModel getUser() {
+		return user;
 	}
-	public void setFriend(UserProfileModel friend) {
-		this.friend = friend;
+	public void setUser(UserProfileModel user) {
+		this.user = user;
 	}
 	
 	

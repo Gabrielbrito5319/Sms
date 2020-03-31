@@ -25,7 +25,7 @@ public class UserProfileModel implements Serializable{
 	private String userName;
 	private String phoneNumber;
 	private String image;
-	private ArrayList<UserProfileModel> contats;
+	private ArrayList<Contacts> contats;
 	private ArrayList<MessageModel> message;
 	private ArrayList<Stories> stories;	
 	private UserModel user;
@@ -97,12 +97,12 @@ public class UserProfileModel implements Serializable{
 	}
 
 	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public ArrayList<UserProfileModel> getContats() {
+	public ArrayList<Contacts> getContats() {
 		return contats;
 	}
 
 
-	public void setContats(ArrayList<UserProfileModel> contats) {
+	public void setContats(ArrayList<Contacts> contats) {
 		this.contats = contats;
 	}
 
