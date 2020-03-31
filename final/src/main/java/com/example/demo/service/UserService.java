@@ -17,4 +17,6 @@ public interface UserService {
 	public UserModel addProfile(UserModel user);
 
 	public UserModel fingByUserName (String UserName);
+	
+	
 }

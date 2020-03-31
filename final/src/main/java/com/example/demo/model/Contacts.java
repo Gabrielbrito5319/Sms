@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -39,7 +41,7 @@ public class Contacts implements Serializable{
 		this.nameContact= nameContact;
 	}
 	
-	@Column (name = "user")
+	@ManyToOne (fetch = FetchType.LAZY)
 	public UserProfileModel getUser() {
 		return user;
 	}

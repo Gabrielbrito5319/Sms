@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 public class Stories implements Serializable{
 	
 	private long id;
-	private UserProfileModel profile; //id do profile
+	private UserProfileModel userprofile; //id do profile
 	private boolean status;
 	private Date creation;
 	private String message;
@@ -29,12 +29,12 @@ public class Stories implements Serializable{
 	}
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profileId", nullable = false)
-	public UserProfileModel getProfile() {
-		return profile;
+	public UserProfileModel getUserProfile() {
+		return userprofile;
 	}
 
 	public void setProfile(UserProfileModel profile) {
-		this.profile = profile;
+		this.userprofile = profile;
 	}
 
 	public boolean isStatus() {

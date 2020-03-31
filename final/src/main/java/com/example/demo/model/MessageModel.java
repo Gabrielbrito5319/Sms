@@ -9,8 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -22,9 +21,10 @@ public class MessageModel implements Serializable {
 	
 	
 	private long id;
-	private UserProfileModel sender;
-	private UserProfileModel receiver;
+	private long sender;
+	private long receiver;
 	private String text;
+	private UserProfileModel user;
 	private Date creationdate;
 	private boolean statusSender;
 	private boolean statusReceive;
@@ -38,23 +38,28 @@ public class MessageModel implements Serializable {
 		this.id = id;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sender", nullable = false)
-	public UserProfileModel getSender() {
+	@ManyToOne (fetch = FetchType.LAZY)
+	public UserProfileModel getUser() {
+		return user;
+	}
+	public void setUser(UserProfileModel user) {
+		this.user = user;
+	}
+	@Column (name ="sender")
+	public long getSender() {
 		return sender;
 	}
-	public void setSender(UserProfileModel sender) {
-		this.sender = sender;
-	}
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "receiver", nullable = false)
-	public UserProfileModel getReceiver() {
+	@Column (name ="receiver")
+	public long getReceiver() {
 		return receiver;
 	}
-	public void setReceiver(UserProfileModel receiver) {
+	public void setSender(long sender) {
+		this.sender = sender;
+	}
+	public void setReceiver(long receiver) {
 		this.receiver = receiver;
 	}
+	
 	
 	@Column(name= "text")
 	@NotNull

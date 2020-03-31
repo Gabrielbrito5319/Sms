@@ -1,5 +1,7 @@
 package com.example.demo.mapper;
 
+import java.util.Date;
+
 import javax.annotation.PostConstruct;
 
 import org.modelmapper.Conditions;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.dto.UserDto;
 import com.example.demo.model.UserModel;
+import com.example.demo.model.UserProfileModel;
 
 @Component
 public class ModelMapperComponent {
@@ -25,6 +28,18 @@ public class ModelMapperComponent {
                 	 @Override
                      protected void configure() {
                      	skip().setId(source.getId());
+                     	map().setFirstName(source.getFirstName());
+                     	map().setLastName(source.getLastName());	
+                    	map().setDateOfBirth(source.getDateOfBirth());	
+                        map().setAddress(source.getAddress()); 
+                        map().setStreet(source.getStreet()); 
+                        map().setCity(source.getCity()); 
+                        map().;
+                         country;
+                    	 email;	
+                    	 password;	
+                    	 status;
+                    	 profile;
                      	map().setEmail(source.getEmail());
                      	map().setName(source.getName());
                      	map().setUsername(source.getUsername());

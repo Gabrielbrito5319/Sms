@@ -24,7 +24,7 @@ public class UserProfileModel implements Serializable{
 	private long id;
 	private String userName;
 	private String phoneNumber;
-	private String image;
+	private byte[] image;
 	private ArrayList<Contacts> contats;
 	private ArrayList<MessageModel> message;
 	private ArrayList<Stories> stories;	
@@ -87,26 +87,25 @@ public class UserProfileModel implements Serializable{
 	}
 
 	@Column(name= "image")
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
-	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "userprofile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public ArrayList<Contacts> getContats() {
 		return contats;
 	}
-
 
 	public void setContats(ArrayList<Contacts> contats) {
 		this.contats = contats;
 	}
 
-	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public ArrayList<MessageModel> getMessage() {
 		return message;
 	}
@@ -116,7 +115,7 @@ public class UserProfileModel implements Serializable{
 		this.message = message;
 	}
 
-	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "userprofile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public ArrayList<Stories> getStories() {
 		return stories;
 	}
