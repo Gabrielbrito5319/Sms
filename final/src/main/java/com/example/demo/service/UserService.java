@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 
 import com.example.demo.model.UserModel;
+import com.example.demo.model.UserProfileModel;
 
 public interface UserService {
 	
@@ -14,7 +15,7 @@ public interface UserService {
 	
 	public void deleteUser (Long id);
 	
-	public UserModel addProfile(UserModel user);
+	public UserModel addProfile(UserProfileModel profile, long id);
 
 	public UserModel fingByUserName (String UserName);
 	

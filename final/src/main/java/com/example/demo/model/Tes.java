@@ -8,4 +8,7 @@ public class Tes {
 //     one = empresa many= funcionario 
 	//@OneToMany primeiro a classe e depois a outra tabela exemplo: uma empresa tem muitos funcionarios
 	//@ManyToOne ja funcionarios pertencem a uma empresa
+	
+	 //consiga a turma de estagio !!!!! 
+
 }
