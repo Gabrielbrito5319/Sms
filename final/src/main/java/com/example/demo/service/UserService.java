@@ -11,13 +11,15 @@ public interface UserService {
 	
 	public void addUser(UserModel user);
 	
-	public void updateUser(UserModel user);
+	public UserModel updateUser(UserModel user);
 	
 	public void deleteUser (Long id);
 	
 	public UserModel addProfile(UserProfileModel profile, long id);
 
-	public UserModel fingByUserName (String UserName);
+	public UserModel findByUserName (String UserName);
+
+	public UserModel findByEmail (String email);
 	
 	
 }
