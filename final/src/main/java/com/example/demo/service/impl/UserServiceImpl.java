@@ -90,8 +90,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserModel findByUserName(String UserName) {
 		// TODO Auto-generated method stub
+		if(userRepository.findByFirstName(UserName)==null) {
+			throw new NotFoundException("usuario nao existe");
+		}
 		
-		return null;
+		return userRepository.findByFirstName(UserName);
 	}
 	
 	@Override
@@ -108,9 +111,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserModel addProfile(UserProfileModel profile, long id) {
 		// TODO Auto-generated method stub
+		if(userRepository.findById(id)==null) {
+			throw new NotFoundException("usuario não existe");
+		}
+		UserModel user = userRepository.findById(id).get();
+		user.setProfile(profile);
 		
-		return null;
+		return userRepository.save(user);
 	}
-
 	
 }
