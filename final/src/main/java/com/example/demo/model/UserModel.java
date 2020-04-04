@@ -194,6 +194,16 @@ public class UserModel implements Serializable{
 	public void setProfile(UserProfileModel profile) {
 		this.profile = profile;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "UserModel [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth="
+				+ dateOfBirth + ", address=" + address + ", street=" + street + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", email=" + email + ", password=" + password + ", status=" + status
+				+ ", profile=" + profile + "]";
+	}
 	
 	
 	

@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,9 +25,9 @@ public class UserProfileModel implements Serializable{
 	private String userName;
 	private String phoneNumber;
 	private byte[] image;
-	private ArrayList<Contacts> contats;
-	private ArrayList<MessageModel> message;
-	private ArrayList<Stories> stories;	
+	private List<Contacts> contats;
+	private List<MessageModel> message;
+	private List<Stories> stories;	
 	private UserModel user;
 	private boolean status;
 
@@ -96,31 +97,31 @@ public class UserProfileModel implements Serializable{
 	}
 
 	@OneToMany(mappedBy = "userprofile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public ArrayList<Contacts> getContats() {
+	public List<Contacts> getContats() {
 		return contats;
 	}
 
-	public void setContats(ArrayList<Contacts> contats) {
+	public void setContats(List<Contacts> contats) {
 		this.contats = contats;
 	}
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	public ArrayList<MessageModel> getMessage() {
+	public List<MessageModel> getMessage() {
 		return message;
 	}
 
 
-	public void setMessage(ArrayList<MessageModel> message) {
+	public void setMessage(List<MessageModel> message) {
 		this.message = message;
 	}
 
 	@OneToMany(mappedBy = "userprofile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public ArrayList<Stories> getStories() {
+	public List<Stories> getStories() {
 		return stories;
 	}
 
 
-	public void setStories(ArrayList<Stories> stories) {
+	public void setStories(List<Stories> stories) {
 		this.stories = stories;
 	}
 

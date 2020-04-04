@@ -18,7 +18,7 @@ public class Contacts implements Serializable{
 	private long id;
 	private String nameContact;
 	private String phoneNumber;
-	private UserProfileModel user;
+	private UserProfileModel userprofile;
 	public Contacts() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -42,11 +42,11 @@ public class Contacts implements Serializable{
 	}
 	
 	@ManyToOne (fetch = FetchType.LAZY)
-	public UserProfileModel getUser() {
-		return user;
+	public UserProfileModel getUserprofile() {
+		return userprofile;
 	}
-	public void setUser(UserProfileModel user) {
-		this.user = user;
+	public void setUserprofile(UserProfileModel user) {
+		this.userprofile = user;
 	}
 	
 	

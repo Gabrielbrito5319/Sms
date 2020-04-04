@@ -16,7 +16,7 @@ import com.example.demo.model.UserProfileModel;
 
 @Component
 public class ModelMapperComponent {
-
+/*
 	public static final ModelMapper modelMapper= new ModelMapper();
 	
 	@PostConstruct
@@ -50,5 +50,5 @@ public class ModelMapperComponent {
                      	skip().setMessages(null);
                      	skip().setStories(null);
                      }
-                });
+                });*/
 }
